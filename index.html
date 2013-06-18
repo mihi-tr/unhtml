@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>unhtml - escape html as a webservice</title>
+</head>
+<style>
+body {font-family: garamond,serif;
+  background: #DDDDDD;}
+h1,h2,h3{ font-family: dejavu sans,helvetica,sans;}
+.container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 5px;
+  }
+</style>
+<body>
+<div class="container">
+<h1>unhtml - escape HTML easily</h1>
+<h2>What?</h2>
+<p>
+This is a simple HTML escaper: pass a query string to an API and get a
+string - without the HTML - back.</p>
+<p>I created this, since converting HTML to text - especially with HTML
+entities is a slight pain. It might be easier to use a WEB API. Also
+currently removing HTML tags relies on regexes - not the best way to do
+it. And finally - writing a google appengine app for fun and profit.</p>
+
+<h2>API</h2>
+<pre>
+curl "http://unhtml.appspot.com/escape?&lt;p>Mot&amp;ouml;rhead&lt;/p>"
+</pre>
+<p>will return the string <pre>Mot&ouml;rhead</pre></p>
+<h2>Use it in Refine</h2>
+<p>To use it in Refine select "Add column by fetchin urls" and use the
+following expression:
+<pre>
+"http://unhtml.appspot.com/escape?"+value.replace("#","%23")
+</pre>
+</p>
+<h2>Code</h2>
+Fork on <a href="http://github.com/mihi-tr/unhtml">Github</a>
+</div>
+</body>
+</html>
